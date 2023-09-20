@@ -15,7 +15,7 @@ type Response = {
 };
 
 type UserQuestionAction = {
-  id: number;
+  readonly id: number;
   user: User;
   question: Question;
   questionId: number;
@@ -24,10 +24,14 @@ type UserQuestionAction = {
 };
 
 export class User {
-  id: number;
+  readonly id: number;
   email: string;
   name: string;
   questions: Question[];
   responses: Response[];
   userQuestionAction: UserQuestionAction[];
+
+  constructor(props: User) {
+    Object.assign(this, props);
+  }
 }
